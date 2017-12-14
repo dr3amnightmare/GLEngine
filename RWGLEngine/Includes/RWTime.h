@@ -1,3 +1,11 @@
+//
+//  RWTime.h
+//  RWGLEngine
+//
+//  Created by Tyler McLean on 2017-06-11.
+//  Copyright © 2017 RWG. All rights reserved.
+//
+
 #ifndef RWTIME_H
 #define RWTIME_H
 

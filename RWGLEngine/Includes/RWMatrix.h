@@ -1,5 +1,5 @@
 //
-//  Matrix.h
+//  RWMatrix.h
 //  RWGLEngine
 //
 //  Created by Tyler McLean on 2017-06-11.
@@ -21,7 +21,7 @@ typedef struct RWMatrix RWMatrix;
 struct RWMatrix {
     Class *class;
     float mat[16];
-//Generated Private Functions
+
     void (* init) (const void *_self);
     void (* identity) (const void *_self);
     void (* applyTranslation) (const void *_self, float x, float y, float z);
@@ -36,7 +36,7 @@ struct RWMatrix {
     char *(* toString) (const void *_self);
 };
 
-//Generated Public Functions
+
 void *RWMatrix_alloc();
 void RWMatrix_dealloc(RWMatrix *ptr);
 

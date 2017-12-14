@@ -1,3 +1,11 @@
+//
+//  RWMutableArray.c
+//  RWGLEngine
+//
+//  Created by Tyler McLean on 2017-06-11.
+//  Copyright © 2017 RWG. All rights reserved.
+//
+
 #include "RWMutableArray.h"
 
 //Generated Prototypes
@@ -14,10 +22,12 @@ void *RWMutableArray_getLastObject(const void *_self);
 void *RWMutableArray_getObjectAtIndex(const void *_self, unsigned int index);
 long RWMutableArray_getCount(const void *_self);
 
-//Generated Public Functions
+
 void *RWMutableArray_alloc() {
     RWMutableArray *ptr = malloc(sizeof(RWMutableArray));
 
+    ptr->class = Class_alloc("RWMutableArray");
+    ptr->class->size = sizeof(ptr);
     ptr->init = &RWMutableArray_init;
     ptr->initWithObjects = &RWMutableArray_initWithObjects;
     ptr->addObject = &RWMutableArray_addObject;
@@ -48,7 +58,7 @@ void RWMutableArray_dealloc(RWMutableArray *ptr) {
     free(ptr);
 }
 
-//Generated Private Functions
+
 void RWMutableArray_init(const void *_self) {
     RWMutableArray *self = (RWMutableArray *)_self;
 

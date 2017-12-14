@@ -1,3 +1,11 @@
+//
+//  RWTime.c
+//  RWGLEngine
+//
+//  Created by Tyler McLean on 2017-06-11.
+//  Copyright © 2017 RWG. All rights reserved.
+//
+
 #include "RWTime.h"
 
 //Generated Prototypes
@@ -7,10 +15,12 @@ void RWTime_setToCurrentTime(const void *_self);
 char *RWTime_getStringFromTime(const void *_self);
 char *RWTime_getStringFromCurrentTime(const void *_self);
 
-//Generated Public Functions
+
 void *RWTime_alloc() {
     RWTime *ptr = malloc(sizeof(RWTime));
 
+    ptr->class = Class_alloc("RWTime");
+    ptr->class->size = sizeof(ptr);
     ptr->currTime = NULL;
     ptr->init = &RWTime_init;
     ptr->setToTime = &RWTime_setToTime;
@@ -34,7 +44,7 @@ void RWTime_dealloc(RWTime *ptr) {
 }
 
 
-//Generated Private Functions
+
 void RWTime_init(const void *_self) {
     RWTime *self = (RWTime *)_self;
 

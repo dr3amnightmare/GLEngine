@@ -1,3 +1,11 @@
+//
+//  Class.h
+//  RWGLEngine
+//
+//  Created by Tyler McLean on 2017-06-11.
+//  Copyright © 2017 RWG. All rights reserved.
+//
+
 #ifndef CLASS_H
 #define CLASS_H
 

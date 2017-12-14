@@ -1,3 +1,11 @@
+//
+//  RWGame.c
+//  RWGLEngine
+//
+//  Created by Tyler McLean on 2017-06-11.
+//  Copyright © 2017 RWG. All rights reserved.
+//
+
 #include "RWGame.h"
 
 static void *instance = NULL;
@@ -8,7 +16,7 @@ void RWGame_swapBuffers(const void *_self);
 void RWGame_terminate(const void *_self);
 void errorCallback(int error, const char *description);
 
-//Generated Public Functions
+
 void *RWGame_getInstance(void) {
     if (instance)
         return instance;
@@ -47,7 +55,7 @@ void RWGame_dealloc(RWGame *ptr) {
 	free(ptr);
 }
 
-//Generated Private Functions
+
 void RWGame_initWithTitle(const void *_self, char *title) {
     RWGame *self = (RWGame *)_self;
 

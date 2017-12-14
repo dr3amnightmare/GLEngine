@@ -1,3 +1,11 @@
+//
+//  RWMatrix.c
+//  RWGLEngine
+//
+//  Created by Tyler McLean on 2017-06-11.
+//  Copyright © 2017 RWG. All rights reserved.
+//
+
 #include "RWMatrix.h"
 
 //Generated Prototypes
@@ -14,7 +22,7 @@ void RWMatrix_toFloatArray(const void *_self, float *srcPtr);
 void RWMatrix_updateFromFloatArray(const void *_self, float *array);
 char *RWMatrix_toString(const void *_self);
 
-//Generated Public Functions
+
 void *RWMatrix_alloc() {
     RWMatrix *ptr = malloc(sizeof(RWMatrix));
 
@@ -49,7 +57,7 @@ void RWMatrix_dealloc(RWMatrix *ptr) {
     free(ptr);
 }
 
-//Generated Private Functions
+
 void RWMatrix_init(const void *_self) {
     RWMatrix *self = (RWMatrix *)_self;
 
@@ -216,11 +224,11 @@ void RWMatrix_setProjection(const void *_self, float fov, float aspect, float ne
     float r = fov * PI / 180.0f;
     float f = 1.0f / (float) tan(r / 2.0f);
 
-    temp->mat[0] = f;
-    temp->mat[5] = f/aspect;
-    temp->mat[10] = -(far + near) / (far - near);
+    temp->mat[0] = f/aspect;
+    temp->mat[5] = f;
+    temp->mat[10] = (far + near) / (near - far);
     temp->mat[11] = -1;
-    temp->mat[14] = -(2 * far * near) / (far - near);
+    temp->mat[14] = (2 * far * near) / (near - far);
     temp->mat[15] = 0;
 
     self->selfMultiplyBy(_self, temp);
@@ -234,16 +242,17 @@ void RWMatrix_setOrtho(const void *_self, float left, float right, float top, fl
     temp->init(temp);
 
     temp->mat[0] = 2/(right - left);
-    temp->mat[3] = -(right + left) / (right - left);
     temp->mat[5] = 2/(top - bottom);
-    temp->mat[7] = -2/(near - far);
-    temp->mat[10] = -2/(near - far);
-    temp->mat[11] = -(far + near)/(far - near);
+    temp->mat[10] = -2/(far - near);
+    temp->mat[12] = -(right + left) / (right - left);
+    temp->mat[13] = -(top + bottom) / (top - bottom);
+    temp->mat[14] = -(far + near)/(far - near);
 
-// | 2 / (r - l),        0        ,        0       , -(right + left)/(right - left)| [0 - 3]
-// |     0      , 2/(top - bottom),        0       , -(top + bottom)/(top - bottom)| [4 - 7]
-// |     0      ,        0        , -2/(far - near), -(far + near)/(far - near)    | [8 - 11]
-// |     0      ,        0        ,        0       ,             1                 | [12 - 15]
+
+// |   2 / (r - l)   ,        0        ,        0        , 0 | [0 - 3]
+// |        0        ,    2/(t - b)    ,        0        , 0 | [4 - 7]
+// |        0        ,        0        ,    -2/(f - n)   , 0 | [8 - 11]
+// | -(r + l)/(r - l), -(t + b)/(t - b), -(f + n)/(f - n), 1 | [12 - 15]
 
     self->selfMultiplyBy(_self, temp);
 

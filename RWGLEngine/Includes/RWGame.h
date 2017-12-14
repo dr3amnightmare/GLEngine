@@ -1,3 +1,11 @@
+//
+//  RWGame.h
+//  RWGLEngine
+//
+//  Created by Tyler McLean on 2017-06-11.
+//  Copyright © 2017 RWG. All rights reserved.
+//
+
 #ifndef RWGAME_H
 #define RWGAME_H
 
@@ -14,13 +22,13 @@ struct RWGame {
     GLFWwindow *window;
     int width;
     int height;
-//Generated Private Functions
+
     void (* initWithTitle) (const void *_self, char *title);
     void (* swapBuffers) (const void *_self);
     void (* terminate) (const void *_self);
 };
 
-//Generated Public Functions
+
 void *RWGame_alloc();
 void RWGame_dealloc(RWGame *ptr);
 void *RWGame_getInstance(void);

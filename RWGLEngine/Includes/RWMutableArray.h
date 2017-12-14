@@ -23,7 +23,7 @@ struct RWMutableArray {
     long count;
     RWObjectNode *first;
     RWObjectNode *last;
-//Generated Private Functions
+
     void (* init) (const void *_self);
     void (* initWithObjects) (const void *_self, ...);
     void (* addObject) (const void *_self, void *object);
@@ -38,7 +38,7 @@ struct RWMutableArray {
     long (* getCount) (const void *_self);
 };
 
-//Generated Public Functions
+
 void *RWMutableArray_alloc();
 void RWMutableArray_dealloc(RWMutableArray *ptr);
 

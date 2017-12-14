@@ -1,3 +1,11 @@
+//
+//  Class.c
+//  RWGLEngine
+//
+//  Created by Tyler McLean on 2017-06-11.
+//  Copyright © 2017 RWG. All rights reserved.
+//
+
 #include "Class.h"
 
 void *Class_alloc(char *name) {

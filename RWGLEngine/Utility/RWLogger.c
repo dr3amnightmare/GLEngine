@@ -1,8 +1,16 @@
+//
+//  RWLogger.c
+//  RWGLEngine
+//
+//  Created by Tyler McLean on 2017-06-11.
+//  Copyright © 2017 RWG. All rights reserved.
+//
+
 #include "RWLogger.h"
 
 //Generated Prototypes
 
-//Generated Public Functions
+
 void Log(char *message, ...) {
     RWTime *time = RWTime_alloc();
 	char *temp;
@@ -22,6 +30,3 @@ void Log(char *message, ...) {
 
 	free(temp);
 }
-
-
-//Generated Private Functions
